@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Хочу Сала — Sklep z produktami wschodnimi (DEMO)</title>
+    <meta name="description"
+        content="DEMO strony głównej sklepu Хочу Сала — kategorie, promocje, nowości, lokalizacje, newsletter.">
+    <style>
+        /* =====================
+       Design tokens (WIP)
+       ===================== */
+        :root {
+            /* Paleta: kość słoniowa / antracyt / miedziany akcent */
+            /* --color-bg: #f7f4ef;
+            --color-surface: #ffffff;
+            --color-text: #1f2937;
+            --color-muted: #6b7280;
+            --color-primary: #b97a3c;
+            --color-primary-600: #a66e36;
+            --color-primary-700: #8e5f2f;
+            --color-secondary: #111827;
+            --color-secondary-600: #374151;
+            --color-on-dark: #ffffff;
+            --color-accent: #2f6b8e; */
+            --color-bg: #ffffff;
+            --color-surface: #f8f0ec;
+            --color-text: #0e0700;
+            /* głęboka czerń-brąz */
+            --color-muted: #765b40;
+            --color-primary: #b97a3c;
+            /* miedź (dodaje życia) */
+            --color-primary-600: #9d7a58;
+            --color-primary-700: #765b40;
+            --color-secondary: #4e351e;
+            /* ciemny brąz */
+            --color-secondary-600: #2c1d12;
+            --color-on-dark: #ffffff;
+            --color-accent: #2f6b8e;
+            /* chłodny niebieski dla kontrastu */
+            /* chłodny kontrapunkt (linki) */
+            --ring: 2px solid rgba(185, 122, 60, .35);
+
+            --radius: 16px;
+            --radius-sm: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .08);
+            --shadow-sm: 0 6px 18px rgba(0, 0, 0, .06);
+            --container: 1200px;
+        }
+
+        /* Reset/typografia skrócony */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg)
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            height: auto
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2;
+            margin: 0 0 .6em
+        }
+
+        p {
+            margin: .6em 0
+        }
+
+        /* Użyteczne */
+        .container {
+            max-width: var(--container);
+            margin-inline: auto;
+            padding: 0 20px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .8rem 1.2rem;
+            border-radius: 999px;
+            background: var(--color-primary);
+            color: var(--color-on-dark);
+            border: 0;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm)
+        }
+
+        .btn:hover {
+            background: var(--color-primary-600)
+        }
+
+        .btn:focus-visible {
+            outline: var(--ring)
+        }
+
+        .btn.secondary {
+            background: var(--color-secondary);
+            color: var(--color-on-dark);
+        }
+
+        .btn.secondary:hover {
+            background: var(--color-secondary-600);
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: .75rem;
+            font-weight: 700;
+            padding: .25rem .6rem;
+            border-radius: 999px;
+            background: var(--color-secondary-600);
+            color: #fff
+        }
+
+        .surface {
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .muted {
+            color: var(--color-muted)
+        }
+
+        /* Skip link */
+        .skip {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden
+        }
+
+        .skip:focus {
+            left: 12px;
+            top: 12px;
+            width: auto;
+            height: auto;
+            padding: .6rem 1rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: var(--shadow)
+        }
+
+        /* Header */
+        .topbar {
+            background: #111827;
+            color: #fff
+        }
+
+        .topbar .container {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+            padding: .5rem 20px;
+            font-size: .9rem
+        }
+
+        header.site {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, .7);
+            backdrop-filter: saturate(150%) blur(10px);
+            z-index: 10;
+            border-bottom: 1px solid rgba(0, 0, 0, .06)
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 0
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: .4px
+        }
+
+        .brand .logo {
+            inline-size: 36px;
+            block-size: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--color-primary), #e2b47f)
+        }
+
+        .nav ul {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .nav a {
+            color: #111827;
+            font-weight: 600
+        }
+
+        .nav a:hover {
+            color: var(--color-primary)
+        }
+
+        .nav .actions {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .search {
+            position: relative;
+            flex: 1;
+            min-width: 180px
+        }
+
+        .search input {
+            width: 100%;
+            padding: .7rem 1rem;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            background: #fff
+        }
+
+        /* Hero */
+        .hero {
+            padding: 56px 0
+        }
+
+        .hero .wrap {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 32px;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 4vw, 46px)
+        }
+
+        .hero p.lead {
+            font-size: 1.125rem;
+            color: var(--color-muted)
+        }
+
+        .hero .media {
+            aspect-ratio: 4/3;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow)
+        }
+
+        .tagline {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px
+        }
+
+        /* Kafle kategorii */
+        .cats {
+            padding: 24px 0 10px
+        }
+
+        .cats .grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 14px
+        }
+
+        .cat {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
+            background: #fff;
+            box-shadow: var(--shadow-sm)
+        }
+
+        .cat .thumb {
+            aspect-ratio: 1/1.05;
+            background: linear-gradient(180deg, #f1ede6, #e6dccf)
+        }
+
+        .cat .label {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            background: rgba(17, 24, 39, .85);
+            color: #fff;
+            border-radius: 999px;
+            padding: .35rem .7rem;
+            font-weight: 700
+        }
+
+        /* Karuzela (promocje/bestsellery) */
+        .carousel {
+            padding: 8px 0 24px
+        }
+
+        .carousel .track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 80%;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 8px
+        }
+
+        .carousel .card {
+            scroll-snap-align: start
+        }
+
+        .carousel .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 10px
+        }
+
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden
+        }
+
+        .card .img {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #eee, #ddd)
+        }
+
+        .card .body {
+            padding: 14px
+        }
+
+        .price {
+            font-weight: 800
+        }
+
+        .old {
+            color: var(--color-muted);
+            text-decoration: line-through;
+            margin-left: .5rem
+        }
+
+        /* Nowości – siatka */
+        .grid4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px
+        }
+
+        /* USP */
+        .usps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px
+        }
+
+        .usp {
+            padding: 18px
+        }
+
+        /* Lokalizacje */
+        .locations .map {
+            aspect-ratio: 16/9;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: linear-gradient(180deg, #e5e7eb, #d1d5db)
+        }
+
+        /* Newsletter */
+        .newsletter .box {
+            display: grid;
+            grid-template-columns: 1.4fr .6fr;
+            gap: 18px;
+            align-items: center;
+            padding: 24px
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: .9rem 1rem;
+            border-radius: 999px;
+            border: 1px solid #d1d5db
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 36px;
+            background: #111827;
+            color: #cbd5e1
+        }
+
+        footer .cols {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 16px;
+            padding: 28px 0
+        }
+
+        footer a {
+            color: #cbd5e1
+        }
+
+        /* Responsywność */
+        @media (max-width: 1024px) {
+            .hero .wrap {
+                grid-template-columns: 1fr
+            }
+
+            .cats .grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .grid4 {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .usps {
+                grid-template-columns: 1fr
+            }
+
+            .newsletter .box {
+                grid-template-columns: 1fr
+            }
+
+            .carousel .track {
+                grid-auto-columns: 88%
+            }
+
+            footer .cols {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media (max-width: 560px) {
+            .cats .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .grid4 {
+                grid-template-columns: 1fr
+            }
+
+            footer .cols {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip" href="#main">Pomiń do treści</a>
+
+    <!-- Top bar -->
+    <div class="topbar">
+        <div class="container">
+            <div>Świeże dostawy • Odbiór osobisty w Gdańsku</div>
+            <div class="muted">Pn–Sb 10:00–20:00</div>
+        </div>
+    </div>
+
+    <!-- Header/Nav -->
+    <header class="site">
+        <div class="container nav" role="navigation" aria-label="Główna nawigacja">
+            <a class="brand" href="#">
+                <span class="logo" aria-hidden="true"></span>
+                <span>Хочу Сала</span>
+            </a>
+            <nav aria-label="Menu">
+                <ul>
+                    <li><a href="#kategorie">Kategorie</a></li>
+                    <li><a href="#promocje">Promocje</a></li>
+                    <li><a href="#nowosci">Nowości</a></li>
+                    <li><a href="#lokalizacje">Lokalizacje</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="actions">
+                <div class="search" role="search">
+                    <label class="skip" for="q">Szukaj</label>
+                    <input id="q" type="search" placeholder="Szukaj produktów…" />
+                </div>
+                <a class="btn" href="#">Koszyk (0)</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container wrap">
+                <div>
+                    <div class="tagline">
+                        <span class="badge">Nowość</span>
+                        <span class="badge" style="background:var(--color-primary)">-15% na start</span>
+                    </div>
+                    <h1>Oryginalne smaki ze Wschodu — świeżo, lokalnie, z serca Gdańska</h1>
+                    <p class="lead">Słonina, wędliny, ryby, słodycze i napoje. Zamów online — odbierz w sklepie lub
+                        wybierz dostawę.</p>
+                    <div style="display:flex;gap:10px;margin-top:16px">
+                        <a class="btn" href="#kategorie">Przeglądaj kategorie</a>
+                        <a class="btn secondary" href="#promocje">Zobacz promocje</a>
+                    </div>
+                </div>
+                <div class="media" aria-hidden="true">
+                    <!-- placeholder grafiki -->
+                    <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <defs>
+                            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+                                <stop offset="0" stop-color="#f1ede6" />
+                                <stop offset="1" stop-color="#e2b47f" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="1200" height="900" fill="url(#g)" />
+                        <g fill="#fff" opacity="0.35">
+                            <circle cx="300" cy="240" r="90" />
+                            <circle cx="520" cy="400" r="120" />
+                            <circle cx="880" cy="540" r="170" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategorie -->
+        <section id="kategorie" class="cats">
+            <div class="container">
+                <h2>Kategorie</h2>
+                <div class="grid" role="list">
+                    <!-- 6–8 kafli -->
+                    <article class="cat" role="listitem">
+                        <div class="thumb"></div>
+                        <div class="label">Słonina</div>
+                    </article>
+                    <article class="cat" role="listitem">
+                        <div class="thumb"></div>
+                        <div class="label">Wędliny</div>
+                    </article>
+                    <article class="cat" role="listitem">
+                        <div class="thumb"></div>
+                        <div class="label">Ryby i owoce morza</div>
+                    </article>
+                    <article class="cat" role="listitem">
+                        <div class="thumb"></div>
+                        <div class="label">Słodycze</div>
+                    </article>
+                    <article class="cat" role="listitem">
+                        <div class="thumb"></div>
+                        <div class="label">Napoje</div>
+                    </article>
+                    <article class="cat" role="listitem">
+                        <div class="thumb"></div>
+                        <div class="label">Produkty sypkie</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promocje (karuzela) -->
+        <section id="promocje" class="carousel">
+            <div class="container">
+                <h2>Promocje</h2>
+                <div class="track" aria-label="Karuzela promocji">
+                    <article class="card">
+                        <div class="img"></div>
+                        <div class="body">
+                            <h3>Słonina klasyczna 300g</h3>
+                            <p><span class="price">14,90 zł</span><span class="old">18,90 zł</span></p>
+                            <button class="btn">Dodaj do koszyka</button>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="img"></div>
+                        <div class="body">
+                            <h3>Ryba w sosie pomidorowym</h3>
+                            <p><span class="price">11,50 zł</span><span class="old">13,50 zł</span></p>
+                            <button class="btn">Dodaj do koszyka</button>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="img"></div>
+                        <div class="body">
+                            <h3>Cukierki „Korówka”</h3>
+                            <p><span class="price">9,90 zł</span><span class="old">12,90 zł</span></p>
+                            <button class="btn">Dodaj do koszyka</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="controls">
+                    <button class="btn" data-snap="prev" aria-label="Poprzednie">◀</button>
+                    <button class="btn" data-snap="next" aria-label="Następne">▶</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nowości (siatka) -->
+        <section id="nowosci" class="container" style="padding:8px 0 24px">
+            <h2>Nowości</h2>
+            <div class="grid4">
+                <article class="card">
+                    <div class="img"></div>
+                    <div class="body">
+                        <h3>Słonina czosnkowa</h3>
+                        <p class="muted">300 g</p>
+                        <p class="price">17,90 zł</p><button class="btn">Dodaj</button>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="img"></div>
+                    <div class="body">
+                        <h3>Napój kwas chlebowy</h3>
+                        <p class="muted">1,5 l</p>
+                        <p class="price">8,90 zł</p><button class="btn">Dodaj</button>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="img"></div>
+                    <div class="body">
+                        <h3>Śledź po bałtycku</h3>
+                        <p class="muted">200 g</p>
+                        <p class="price">12,50 zł</p><button class="btn">Dodaj</button>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="img"></div>
+                    <div class="body">
+                        <h3>Chałwa waniliowa</h3>
+                        <p class="muted">250 g</p>
+                        <p class="price">10,90 zł</p><button class="btn">Dodaj</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- USP -->
+        <section class="container" style="padding:8px 0 24px">
+            <div class="usps">
+                <div class="surface usp">
+                    <h3>Oryginalne produkty</h3>
+                    <p class="muted">Sprawdzony import — smaki, które znasz i lubisz.</p>
+                </div>
+                <div class="surface usp">
+                    <h3>Szybka dostawa</h3>
+                    <p class="muted">Kurier / Paczkomaty, a także odbiór osobisty w Gdańsku.</p>
+                </div>
+                <div class="surface usp">
+                    <h3>Bezpieczne płatności</h3>
+                    <p class="muted">BLIK, szybkie przelewy, gotówka przy odbiorze.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lokalizacje -->
+        <section id="lokalizacje" class="container locations" style="padding:8px 0 24px">
+            <h2>Nasza lokalizacja — Gdańsk</h2>
+            <div class="map" role="img" aria-label="Mapa lokalizacji sklepu w Gdańsku"></div>
+            <p class="muted" style="margin-top:.6rem">Pn–Sb 10:00–20:00 • Nd 11:00–17:00 • tel. 500 000 000</p>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter container" style="padding:8px 0 24px">
+            <div class="surface box">
+                <div>
+                    <h2>Zgarnij -10% na pierwsze zakupy</h2>
+                    <p class="muted">Zapisz się do newslettera — wyślemy kod rabatowy.</p>
+                </div>
+                <form aria-label="Formularz newsletter">
+                    <label class="skip" for="email">Adres e‑mail</label>
+                    <div style="display:flex;gap:10px;align-items:center">
+                        <input id="email" type="email" placeholder="twoj@email.pl" required>
+                        <button class="btn" type="submit">Zapisz się</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="kontakt">
+        <div class="container cols">
+            <div>
+                <h3 style="margin-top:0">Хочу Сала</h3>
+                <p class="muted">Sklep z produktami wschodnimi w Gdańsku. Najlepsze słoniny, ryby, słodycze i napoje.
+                </p>
+            </div>
+            <nav aria-label="Dodatkowe">
+                <h4>Informacje</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:grid;gap:6px">
+                    <li><a href="#">O nas</a></li>
+                    <li><a href="#">Dostawa</a></li>
+                    <li><a href="#">Płatności</a></li>
+                    <li><a href="#">Regulamin</a></li>
+                    <li><a href="#">Polityka prywatności</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Kategorie">
+                <h4>Kategorie</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:grid;gap:6px">
+                    <li><a href="#kategorie">Słonina</a></li>
+                    <li><a href="#kategorie">Wędliny</a></li>
+                    <li><a href="#kategorie">Ryby</a></li>
+                    <li><a href="#kategorie">Słodycze</a></li>
+                </ul>
+            </nav>
+            <div>
+                <h4>Kontakt</h4>
+                <p class="muted">ul. Przykładowa 1, 80-000 Gdańsk<br>tel. 500 000 000<br>email: sklep@chce-salo.pl</p>
+            </div>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,.15)">
+            <div class="container"
+                style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:.9rem">
+                <span>© <span id="y"></span> Хочу Сала</span>
+                <span>Demo by ArtiWeb</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Rok w stopce
+        document.getElementById('y').textContent = new Date().getFullYear();
+
+        // Prosta kontrola karuzeli (scroll-snap)
+        (function () {
+            const track = document.querySelector('.carousel .track');
+            const prev = document.querySelector('[data-snap="prev"]');
+            const next = document.querySelector('[data-snap="next"]');
+            if (!track) return;
+            const cardW = () => track.firstElementChild?.getBoundingClientRect().width || 300;
+            prev?.addEventListener('click', () => track.scrollBy({ left: -cardW() - 16, behavior: 'smooth' }));
+            next?.addEventListener('click', () => track.scrollBy({ left: cardW() + 16, behavior: 'smooth' }));
+        })();
+    </script>
+</body>
+
+</html>

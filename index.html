@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Хочу Сала — Sklep z produktami wschodnimi (DEMO)</title>
+  <meta name="description"
+    content="DEMO strony głównej sklepu Хочу Сала — kategorie, promocje, nowości, lokalizacje, newsletter." />
+
+  <!-- Swiper (CDN) -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./index.css">
+
+</head>
+
+<body class="theme-rustic">
+  <a class="skip" href="#main"
+    style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Pomiń do treści</a>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container">
+      <div>Świeże dostawy • Odbiór osobisty w Gdańsku</div>
+      <div class="muted" style="color:#d1d5db">Pn–Sb 10:00–20:00</div>
+    </div>
+  </div>
+
+  <!-- Header/Nav -->
+  <header class="site">
+    <div class="container nav" role="navigation" aria-label="Główna nawigacja">
+      <a class="brand" href="/">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Хочу Сала</span>
+      </a>
+      <nav aria-label="Menu">
+        <ul>
+          <li><a href="./sklep.html">Sklep</a></li>
+          <li><a href="./karta.html">karta</a></li>
+          <li><a href="#nowosci">Nowości</a></li>
+          <li><a href="#lokalizacje">Lokalizacje</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <div class="search" role="search">
+
+          <input id="q" type="search" placeholder="Szukaj produktów…" />
+        </div>
+        <a class="btn" href="#">Koszyk (0)</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container wrap">
+        <div>
+          <div class="tagline">
+            <span class="badge">Nowość</span>
+            <span class="badge" style="background: var(--color-primary)">-15% na start</span>
+          </div>
+          <h1>Oryginalne smaki ze Wschodu — świeżo, lokalnie, z serca Gdańska</h1>
+          <p class="lead">Słonina, wędliny, ryby, słodycze i napoje. Zamów online — odbierz w sklepie lub wybierz
+            dostawę.</p>
+          <div style="display:flex;gap:10px;margin-top:16px">
+            <a class="btn" href="#kategorie">Przeglądaj kategorie</a>
+            <a class="btn secondary" href="#promocje">Zobacz promocje</a>
+          </div>
+        </div>
+        <div class="media" aria-hidden="true">
+          <!-- obraz hero (zewnętrzny) -->
+          <img src="https://tse1.mm.bing.net/th/id/OIP.mExJshzyheHO22YQdxoDQwHaD2?pid=Api"
+            alt="Deska z tradycyjnymi produktami: słonina, czosnek, cebula, chleb" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Kategorie -->
+    <section id="kategorie" class="cats">
+      <div class="container">
+        <h2>Kategorie</h2>
+        <div class="grid" role="list">
+          <article class="cat" role="listitem">
+            <img data-img="cat_slonina" alt="Słonina" />
+            <div class="label">Słonina</div>
+          </article>
+          <article class="cat" role="listitem">
+            <img data-img="cat_wedliny" alt="Wędliny" />
+            <div class="label">Wędliny</div>
+          </article>
+          <article class="cat" role="listitem">
+            <img data-img="cat_ryby" alt="Ryby " />
+            <div class="label">Ryby </div>
+          </article>
+          <article class="cat" role="listitem">
+            <img data-img="cat_slodycze" alt="Słodycze" />
+            <div class="label">Słodycze</div>
+          </article>
+          <article class="cat" role="listitem">
+            <img data-img="cat_napoje" alt="Napoje" />
+            <div class="label">Napoje</div>
+          </article>
+          <article class="cat" role="listitem">
+            <img data-img="cat_sypkie" alt="Produkty sypkie" />
+            <div class="label">Produkty sypkie</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promocje (Swiper) -->
+    <section id="promocje" class="carousel">
+      <div class="container">
+        <h2>Promocje</h2>
+        <div class="swiper" id="promo-swiper" aria-label="Karuzela promocji">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="card">
+                <img class="img" data-img="prod_boczek" alt="Słonina klasyczna 300g" />
+                <div class="body">
+                  <h3>Słonina klasyczna 300g</h3>
+                  <p><span class="price">14,90 zł</span><span class="old">18,90 zł</span></p>
+                  <button class="btn">Dodaj do koszyka</button>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card">
+                <img class="img" data-img="prod_kielbasa" alt="Ryba w sosie pomidorowym" />
+                <div class="body">
+                  <h3>Ryba w sosie pomidorowym</h3>
+                  <p><span class="price">11,50 zł</span><span class="old">13,50 zł</span></p>
+                  <button class="btn">Dodaj do koszyka</button>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card">
+                <img class="img" data-img="prod_halva" alt="Cukierki Korówka" />
+                <div class="body">
+                  <h3>Cukierki „Korówka”</h3>
+                  <p><span class="price">9,90 zł</span><span class="old">12,90 zł</span></p>
+                  <button class="btn">Dodaj do koszyka</button>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card">
+                <img class="img" data-img="prod_kielbasa" alt="Ryba w sosie pomidorowym" />
+                <div class="body">
+                  <h3>Ryba w sosie pomidorowym</h3>
+                  <p><span class="price">11,50 zł</span><span class="old">13,50 zł</span></p>
+                  <button class="btn">Dodaj do koszyka</button>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card">
+                <img class="img" data-img="prod_boczek" alt="Słonina klasyczna 300g" />
+                <div class="body">
+                  <h3>Słonina klasyczna 300g</h3>
+                  <p><span class="price">14,90 zł</span><span class="old">18,90 zł</span></p>
+                  <button class="btn">Dodaj do koszyka</button>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="swiper-button-prev" aria-label="Poprzednie"></div>
+          <div class="swiper-button-next" aria-label="Następne"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nowości (siatka) -->
+    <section id="nowosci" class="container" style="padding:8px 0 24px">
+      <h2>Nowości</h2>
+      <div class="grid4">
+        <article class="card">
+          <img class="img" src="https://tse2.mm.bing.net/th/id/OIP.3KkNzr1c8oUe8hYgL9pK2wHaE8?pid=Api"
+            alt="Słonina czosnkowa" />
+          <div class="body">
+            <h3>Słonina czosnkowa</h3>
+            <p class="muted">300 g</p>
+            <p class="price">17,90 zł</p><button class="btn">Dodaj</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="img" src="https://tse3.mm.bing.net/th/id/OIP.Q1t8r5cK1m3bC9B6ZP7AkgHaE8?pid=Api"
+            alt="Napój kwas chlebowy" />
+          <div class="body">
+            <h3>Napój kwas chlebowy</h3>
+            <p class="muted">1,5 l</p>
+            <p class="price">8,90 zł</p><button class="btn">Dodaj</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="img" src="https://tse1.mm.bing.net/th/id/OIP.h1k1rP8Wl2p3Y4Z5a6B7cQHaE8?pid=Api"
+            alt="Śledź po bałtycku" />
+          <div class="body">
+            <h3>Śledź po bałtycku</h3>
+            <p class="muted">200 g</p>
+            <p class="price">12,50 zł</p><button class="btn">Dodaj</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="img" src="https://tse2.mm.bing.net/th/id/OIP.YkJm3Yp2b7lN2ZkUuHcQ8wHaE8?pid=Api"
+            alt="Chałwa waniliowa" />
+          <div class="body">
+            <h3>Chałwa waniliowa</h3>
+            <p class="muted">250 g</p>
+            <p class="price">10,90 zł</p><button class="btn">Dodaj</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- USP -->
+    <section class="container" style="padding:8px 0 24px">
+      <div class="usps">
+        <div class="surface usp">
+          <h3>Oryginalne produkty</h3>
+          <p class="muted">Sprawdzony import — smaki, które znasz i lubisz.</p>
+        </div>
+        <div class="surface usp">
+          <h3>Szybka dostawa</h3>
+          <p class="muted">Kurier / Paczkomaty, a także odbiór osobisty w Gdańsku.</p>
+        </div>
+        <div class="surface usp">
+          <h3>Bezpieczne płatności</h3>
+          <p class="muted">BLIK, szybkie przelewy, gotówka przy odbiorze.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statystyki / Licznik -->
+    <section id="statystyki" class="container" style="padding:8px 0 24px">
+      <h2>Dlaczego my?</h2>
+      <div class="grid4">
+        <article class="surface usp" style="text-align:center">
+          <img class="img" src="https://tse2.mm.bing.net/th/id/OIP.gf4q2b8y6t3aQZzbV9u5SgHaE8?pid=Api"
+            alt="Ikona świeżości"
+            style="width:72px;margin:0 auto 8px;aspect-ratio:1/1;object-fit:cover;border-radius:12px" />
+          <h3><span class="counter" data-target="1200">0</span>+</h3>
+          <p class="muted">Produktów w ofercie</p>
+        </article>
+        <article class="surface usp" style="text-align:center">
+          <img class="img" src="https://tse1.mm.bing.net/th/id/OIP.n0cZ-8XrO9m2aV8r1mZ5PwHaE7?pid=Api"
+            alt="Ikona dostawy"
+            style="width:72px;margin:0 auto 8px;aspect-ratio:1/1;object-fit:cover;border-radius:12px" />
+          <h3><span class="counter" data-target="24">0</span>h</h3>
+          <p class="muted">Średni czas dostawy</p>
+        </article>
+        <article class="surface usp" style="text-align:center">
+          <img class="img" src="https://tse4.mm.bing.net/th/id/OIP._I3B3oHqfE7G8a7Yb7aZpgHaE8?pid=Api"
+            alt="Ikona opinii"
+            style="width:72px;margin:0 auto 8px;aspect-ratio:1/1;object-fit:cover;border-radius:12px" />
+          <h3><span class="counter" data-target="4.8">0</span>/5</h3>
+          <p class="muted">Średnia ocena klientów</p>
+        </article>
+        <article class="surface usp" style="text-align:center">
+          <img class="img" src="https://tse2.mm.bing.net/th/id/OIP.Qb1Wwqv6m2b5v7R8g3k4lAHaE8?pid=Api"
+            alt="Ikona lokalizacji"
+            style="width:72px;margin:0 auto 8px;aspect-ratio:1/1;object-fit:cover;border-radius:12px" />
+          <h3><span class="counter" data-target="1">0</span></h3>
+          <p class="muted">Sklep w Gdańsku</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Lokalizacje -->
+    <section id="lokalizacje" class="container locations" style="padding:8px 0 24px">
+      <h2>Nasza lokalizacja — Gdańsk</h2>
+      <div class="map">
+        <!-- Google Maps iframe (przykładowy punkt w Gdańsku) -->
+        <iframe title="Mapa sklepu Gdańsk"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9324.9699971333!2d18.6466358!3d54.3520258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd733b0df7e0af%3A0x3c1e0d6c1e0d1c4!2sGda%C5%84sk%20Old%20Town!5e0!3m2!1spl!2spl!4v1700000000000"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p class="muted" style="margin-top:.6rem">Pn–Sb 10:00–20:00 • Nd 11:00–17:00 • tel. 500 000 000</p>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter container" style="padding:8px 0 24px">
+      <div class="surface box">
+        <div>
+          <h2>Zgarnij -10% na pierwsze zakupy</h2>
+          <p class="muted">Zapisz się do newslettera — wyślemy kod rabatowy.</p>
+        </div>
+        <form aria-label="Formularz newsletter">
+          <label class="skip" for="email">Adres e‑mail</label>
+          <div style="display:flex;gap:10px;align-items:center">
+            <input id="email" type="email" placeholder="twoj@email.pl" required />
+            <button class="btn" type="submit">Zapisz się</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="kontakt">
+
+    <div class="container cols">
+      <div>
+        <h3 style="margin-top:0">Хочу Сала</h3>
+        <p class="muted">Sklep z produktami wschodnimi w Gdańsku. Najlepsze słoniny, ryby, słodycze i napoje.</p>
+      </div>
+      <nav aria-label="Dodatkowe">
+        <h4>Informacje</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:6px">
+          <li><a href="#">O nas</a></li>
+          <li><a href="#">Dostawa</a></li>
+          <li><a href="#">Płatności</a></li>
+          <li><a href="#">Regulamin</a></li>
+          <li><a href="#">Polityka prywatności</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Kategorie">
+        <h4>Kategorie</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:6px">
+          <li><a href="#kategorie">Słonina</a></li>
+          <li><a href="#kategorie">Wędliny</a></li>
+          <li><a href="#kategorie">Ryby</a></li>
+          <li><a href="#kategorie">Słodycze</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h4>Kontakt</h4>
+        <p class="muted">ul. Przykładowa 1, 80-000 Gdańsk<br />tel. 500 000 000<br />email: sklep@chce-salo.pl</p>
+      </div>
+    </div>
+
+    <!-- Credits / Atrybucje -->
+    <div class="container" style="padding:12px 0;border-top:1px solid rgba(255,255,255,.15)">
+      <h4 style="margin:8px 0 6px">Credits / Atrybucje</h4>
+      <p class="muted" style="font-size:.9rem;line-height:1.4">
+        Obrazy użyte w demie pochodzą z publicznych miniatur wyszukiwarki (Bing thumbnails) i służą wyłącznie **do
+        celów demonstracyjnych**.
+        W finalnej wersji należy podmienić je na materiały z wykupioną licencją lub własne zdjęcia.
+        Jeśli skorzystamy z **Freepik**, zgodnie z ich licencją wymagana jest **atrybucja** (np. „Image by Freepik”) w
+        stopce oraz/lub na podstronie z informacjami o prawach.
+        Dla zdjęć z **Unsplash/Pexels** atrybucja nie jest wymagana, ale zalecana.
+      </p>
+      <ul style="margin:.4rem 0 0;padding-left:18px;font-size:.9rem;color:#aebbd0">
+        <li>Hero, kategorie, promocje, nowości: miniatury obrazów z wyszukiwarki (tymczasowe).</li>
+        <li>Ikony w sekcji statystyk: zdjęcia poglądowe (tymczasowe).</li>
+      </ul>
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,.15)">
+      <div class="container"
+        style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:.9rem">
+        <span>© <span id="y"></span> Хочу Сала</span>
+        <span>Demo by ArtiWeb</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    // Rok w stopce
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Inicjalizacja Swiper dla sekcji Promocje
+    const promoSwiper = new Swiper('#promo-swiper', {
+      slidesPerView: 1.15,
+      spaceBetween: 16,
+      loop: true,
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      breakpoints: {
+        640: { slidesPerView: 1.3 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+  </script>
+  <script>
+    // Rok w stopce
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Inicjalizacja Swiper (już w pliku)
+
+    // Animacja liczników, gdy sekcja wejdzie w viewport
+    (function () {
+      const els = document.querySelectorAll('.counter');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(el => el.textContent = el.getAttribute('data-target'));
+        return;
+      }
+      const ease = (t) => 1 - Math.pow(1 - t, 3);
+      const animate = (el) => {
+        const target = parseFloat(el.getAttribute('data-target'));
+        const isFloat = !Number.isInteger(target);
+        const start = performance.now();
+        const dur = 1200;
+        const step = (now) => {
+          const p = Math.min(1, (now - start) / dur);
+          const val = target * ease(p);
+          el.textContent = isFloat ? val.toFixed(1) : Math.round(val);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            animate(e.target);
+            io.unobserve(e.target);
+          }
+        })
+      }, { threshold: .6 });
+      els.forEach(el => io.observe(el));
+    })();
+  </script>
+  <script>
+    const IMAGES = {
+      // HERO
+      hero1: "https://images.pexels.com/photos/1590773/pexels-photo-1590773.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      hero2: "https://images.pexels.com/photos/31012803/pexels-photo-31012803.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      hero3: "https://images.pexels.com/photos/19993434/pexels-photo-19993434.jpeg?auto=compress&cs=tinysrgb&w=1600",
+
+      // Kategorie
+      cat_slonina: "https://images.pexels.com/photos/1590773/pexels-photo-1590773.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      cat_wedliny: "https://images.pexels.com/photos/929137/pexels-photo-929137.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      cat_ryby: "https://images.pexels.com/photos/19993434/pexels-photo-19993434.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      cat_owoce_morza: "https://images.pexels.com/photos/4725624/pexels-photo-4725624.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      cat_slodycze: "https://images.pexels.com/photos/5420863/pexels-photo-5420863.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      cat_napoje: "https://images.pexels.com/photos/12111188/pexels-photo-12111188.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      cat_sypkie: "https://images.pexels.com/photos/8108170/pexels-photo-8108170.jpeg?auto=compress&cs=tinysrgb&w=1200",
+
+      // Promocje/nowości (demo)
+      prod_boczek: "https://images.pexels.com/photos/1590773/pexels-photo-1590773.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      prod_kielbasa: "https://images.pexels.com/photos/929137/pexels-photo-929137.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      prod_halva: "https://images.pexels.com/photos/27950069/pexels-photo-27950069.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      prod_napoje: "https://images.pexels.com/photos/12111188/pexels-photo-12111188.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      prod_herring: "https://images.pexels.com/photos/19993434/pexels-photo-19993434.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("img[data-img]").forEach(img => {
+        const key = img.getAttribute("data-img");
+        if (IMAGES[key]) img.src = IMAGES[key];
+      });
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./index.css">
+    <title>Słonina klasyczna 300g — Хочу Сала (DEMO)</title>
+    <style>
+        :root {
+            --color-bg: #f8f0ec;
+            --color-surface: #fff;
+            --color-text: #4e351e;
+            --color-muted: #765b40;
+            --color-primary: #9d7a58;
+            --color-primary-600: #765b40;
+            --color-secondary: #0e0700;
+            --color-secondary-600: #2a1a0f;
+            --color-on-dark: #fff;
+            --container: 1200px;
+            --radius: 16px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .08)
+        }
+
+        body {
+            margin: 0;
+            font: 16px/1.55 system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg)
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: auto;
+            padding: 0 20px
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        header {
+            background: #fff;
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, .06);
+            backdrop-filter: saturate(150%) blur(8px)
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .7rem 1rem;
+            border-radius: 999px;
+            background: var(--color-primary);
+            color: #fff;
+            border: 0;
+            cursor: pointer
+        }
+
+        /* Listing layout */
+        .breadcrumbs {
+            font-size: .9rem;
+            color: var(--color-muted);
+            padding: 10px 0
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 24px;
+            padding: 24px 0
+        }
+
+        /* Filters */
+        .filters {
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow)
+        }
+
+        .filters h3 {
+            margin: 0 0 .6rem
+        }
+
+        .filters label {
+            display: block;
+            margin: .6rem 0
+        }
+
+        .filters input[type="search"],
+        .filters input[type="text"],
+        .filters select {
+            width: 100%;
+            padding: .7rem 1rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            background: #fff
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px
+        }
+
+        .chip {
+            padding: .3rem .7rem;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            font-size: .85rem;
+            cursor: pointer
+        }
+
+        .chip.active {
+            border-color: var(--color-primary);
+            color: #000
+        }
+
+        /* Products grid */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, .06);
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+            border-color: rgba(0, 0, 0, .1)
+        }
+
+        .card .img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            display: block
+        }
+
+        .card .body {
+            padding: 12px
+        }
+
+        .price {
+            font-weight: 800
+        }
+
+        .old {
+            color: var(--color-muted);
+            text-decoration: line-through;
+            margin-left: .4rem
+        }
+
+        .badges {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            display: flex;
+            gap: 6px
+        }
+
+        .badge {
+            background: var(--color-primary);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: .75rem
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px
+        }
+
+        /* Toolbar */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px
+        }
+
+        .tab {
+            padding: .5rem .9rem;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            cursor: pointer
+        }
+
+        .tab.active {
+            border-color: var(--color-primary)
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 18px 0
+        }
+
+        .pagination a {
+            padding: .5rem .8rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #fff
+        }
+
+        @media(max-width:1024px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(max-width:560px) {
+            .products {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site">
+        <div class="container nav" role="navigation" aria-label="Główna nawigacja">
+            <a class="brand" href="/">
+                <span class="logo" aria-hidden="true"></span>
+                <span>Хочу Сала</span>
+            </a>
+            <nav aria-label="Menu">
+                <ul>
+                    <li><a href="./sklep.html">Sklep</a></li>
+                    <li><a href="./karta.html">karta</a></li>
+                    <li><a href="#nowosci">Nowości</a></li>
+                    <li><a href="#lokalizacje">Lokalizacje</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="actions">
+                <div class="search" role="search">
+
+                    <input id="q" type="search" placeholder="Szukaj produktów…" />
+                </div>
+                <a class="btn" href="#">Koszyk (0)</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="breadcrumbs">Home / Sklep</div>
+        <div class="grid">
+            <aside class="filters">
+                <h3>Filtry</h3>
+                <label>Szukanie
+                    <input type="search" placeholder="Szukaj…">
+                </label>
+                <label>Kategoria
+                    <select>
+                        <option>Wszystkie</option>
+                        <option>Słonina</option>
+                        <option>Wędliny</option>
+                        <option>Ryby</option>
+                        <option>Owoce morza</option>
+                        <option>Słodycze</option>
+                    </select>
+                </label>
+                <label>Marka
+                    <input type="text" placeholder="np. Хочу">
+                </label>
+                <label>Cena
+                    <input type="range" min="0" max="100" value="50">
+                </label>
+                <div class="chips" aria-label="Szybkie tagi">
+                    <button class="chip active">Bestseller</button>
+                    <button class="chip">Promocja</button>
+                    <button class="chip">Nowość</button>
+                </div>
+            </aside>
+
+            <section class="listing">
+                <div class="toolbar">
+                    <div class="tabs" role="tablist">
+                        <button class="tab active" role="tab">Wszystkie</button>
+                        <button class="tab" role="tab">Ryby</button>
+                        <button class="tab" role="tab">Owoce morza</button>
+                    </div>
+                    <label>Sortuj:
+                        <select>
+                            <option>Najpopularniejsze</option>
+                            <option>Od najtańszych</option>
+                            <option>Od najdroższych</option>
+                            <option>Najnowsze</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="products">
+                    <article class="card">
+                        <img class="img" data-img="prod_boczek" alt="Słonina klasyczna 300g">
+                        <div class="body">
+                            <h3><a href="#">Słonina klasyczna 300g</a></h3>
+                            <div class="meta-row">
+                                <p class="price">14,90 zł</p><button class="btn">Dodaj</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img class="img" data-img="prod_kielbasa" alt="Kiełbasa wędzona">
+                        <div class="body">
+                            <h3><a href="#">Kiełbasa wędzona</a></h3>
+                            <div class="meta-row">
+                                <p class="price">19,90 zł</p><button class="btn">Dodaj</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img class="img" data-img="prod_herring" alt="Śledź w oleju">
+                        <div class="body">
+                            <h3><a href="#">Śledź w oleju</a></h3>
+                            <div class="meta-row">
+                                <p class="price">12,50 zł</p><button class="btn">Dodaj</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img class="img" data-img="prod_napoje" alt="Kwas chlebowy">
+                        <div class="body">
+                            <h3><a href="#">Kwas chlebowy</a></h3>
+                            <div class="meta-row">
+                                <p class="price">8,90 zł</p><button class="btn">Dodaj</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img class="img" data-img="prod_halva" alt="Chałwa waniliowa">
+                        <div class="body">
+                            <h3><a href="#">Chałwa waniliowa</a></h3>
+                            <div class="meta-row">
+                                <p class="price">10,90 zł</p><button class="btn">Dodaj</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img class="img" data-img="prod_zboza" alt="Ryż / zboża">
+                        <div class="body">
+                            <h3><a href="#">Ryż Premium 1kg</a></h3>
+                            <div class="meta-row">
+                                <p class="price">7,50 zł</p><button class="btn">Dodaj</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <nav class="pagination" aria-label="Paginacja">
+                    <a href="#" aria-current="page">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">Następna »</a>
+                </nav>
+            </section>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer id="kontakt">
+
+        <div class="container cols">
+            <div>
+                <h3 style="margin-top:0">Хочу Сала</h3>
+                <p class="muted">Sklep z produktami wschodnimi w Gdańsku. Najlepsze słoniny, ryby, słodycze i napoje.
+                </p>
+            </div>
+            <nav aria-label="Dodatkowe">
+                <h4>Informacje</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:grid;gap:6px">
+                    <li><a href="#">O nas</a></li>
+                    <li><a href="#">Dostawa</a></li>
+                    <li><a href="#">Płatności</a></li>
+                    <li><a href="#">Regulamin</a></li>
+                    <li><a href="#">Polityka prywatności</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Kategorie">
+                <h4>Kategorie</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:grid;gap:6px">
+                    <li><a href="#kategorie">Słonina</a></li>
+                    <li><a href="#kategorie">Wędliny</a></li>
+                    <li><a href="#kategorie">Ryby</a></li>
+                    <li><a href="#kategorie">Słodycze</a></li>
+                </ul>
+            </nav>
+            <div>
+                <h4>Kontakt</h4>
+                <p class="muted">ul. Przykładowa 1, 80-000 Gdańsk<br />tel. 500 000 000<br />email: sklep@chce-salo.pl
+                </p>
+            </div>
+        </div>
+
+        <!-- Credits / Atrybucje -->
+        <div class="container" style="padding:12px 0;border-top:1px solid rgba(255,255,255,.15)">
+            <h4 style="margin:8px 0 6px">Credits / Atrybucje</h4>
+            <p class="muted" style="font-size:.9rem;line-height:1.4">
+                Obrazy użyte w demie pochodzą z publicznych miniatur wyszukiwarki (Bing thumbnails) i służą wyłącznie
+                **do
+                celów demonstracyjnych**.
+                W finalnej wersji należy podmienić je na materiały z wykupioną licencją lub własne zdjęcia.
+                Jeśli skorzystamy z **Freepik**, zgodnie z ich licencją wymagana jest **atrybucja** (np. „Image by
+                Freepik”) w
+                stopce oraz/lub na podstronie z informacjami o prawach.
+                Dla zdjęć z **Unsplash/Pexels** atrybucja nie jest wymagana, ale zalecana.
+            </p>
+            <ul style="margin:.4rem 0 0;padding-left:18px;font-size:.9rem;color:#aebbd0">
+                <li>Hero, kategorie, promocje, nowości: miniatury obrazów z wyszukiwarki (tymczasowe).</li>
+                <li>Ikony w sekcji statystyk: zdjęcia poglądowe (tymczasowe).</li>
+            </ul>
+        </div>
+
+        <div style="border-top:1px solid rgba(255,255,255,.15)">
+            <div class="container"
+                style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:.9rem">
+                <span>© <span id="y"></span> Хочу Сала</span>
+                <span>Demo by ArtiWeb</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Rok w stopce
+        document.getElementById('y').textContent = new Date().getFullYear();
+
+        // Inicjalizacja Swiper dla sekcji Promocje
+        const promoSwiper = new Swiper('#promo-swiper', {
+            slidesPerView: 1.15,
+            spaceBetween: 16,
+            loop: true,
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            breakpoints: {
+                640: { slidesPerView: 1.3 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+    </script>
+    <script>
+        // Rok w stopce
+        document.getElementById('y').textContent = new Date().getFullYear();
+
+        // Inicjalizacja Swiper (już w pliku)
+
+        // Animacja liczników, gdy sekcja wejdzie w viewport
+        (function () {
+            const els = document.querySelectorAll('.counter');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(el => el.textContent = el.getAttribute('data-target'));
+                return;
+            }
+            const ease = (t) => 1 - Math.pow(1 - t, 3);
+            const animate = (el) => {
+                const target = parseFloat(el.getAttribute('data-target'));
+                const isFloat = !Number.isInteger(target);
+                const start = performance.now();
+                const dur = 1200;
+                const step = (now) => {
+                    const p = Math.min(1, (now - start) / dur);
+                    const val = target * ease(p);
+                    el.textContent = isFloat ? val.toFixed(1) : Math.round(val);
+                    if (p < 1) requestAnimationFrame(step);
+                };
+                requestAnimationFrame(step);
+            };
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        animate(e.target);
+                        io.unobserve(e.target);
+                    }
+                })
+            }, { threshold: .6 });
+            els.forEach(el => io.observe(el));
+        })();
+    </script>
+    <script>
+        // const IMAGES = {
+        //     // HERO
+        //     hero1: "https://images.pexels.com/photos/1590773/pexels-photo-1590773.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        //     hero2: "https://images.pexels.com/photos/31012803/pexels-photo-31012803.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        //     hero3: "https://images.pexels.com/photos/19993434/pexels-photo-19993434.jpeg?auto=compress&cs=tinysrgb&w=1600",
+
+        //     // Kategorie
+        //     cat_slonina: "https://images.pexels.com/photos/1590773/pexels-photo-1590773.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        //     cat_wedliny: "https://images.pexels.com/photos/929137/pexels-photo-929137.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        //     cat_ryby: "https://images.pexels.com/photos/19993434/pexels-photo-19993434.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        //     cat_owoce_morza: "https://images.pexels.com/photos/4725624/pexels-photo-4725624.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        //     cat_slodycze: "https://images.pexels.com/photos/5420863/pexels-photo-5420863.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        //     cat_napoje: "https://images.pexels.com/photos/12111188/pexels-photo-12111188.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        //     cat_sypkie: "https://images.pexels.com/photos/8108170/pexels-photo-8108170.jpeg?auto=compress&cs=tinysrgb&w=1200",
+
+        //     // Promocje/nowości (demo)
+        //     prod_boczek: "https://images.pexels.com/photos/1590773/pexels-photo-1590773.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        //     prod_kielbasa: "https://images.pexels.com/photos/929137/pexels-photo-929137.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        //     prod_halva: "https://images.pexels.com/photos/27950069/pexels-photo-27950069.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        //     prod_napoje: "https://images.pexels.com/photos/12111188/pexels-photo-12111188.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        //     prod_herring: "https://images.pexels.com/photos/19993434/pexels-photo-19993434.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        // };
+
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     document.querySelectorAll("img[data-img]").forEach(img => {
+        //         const key = img.getAttribute("data-img");
+        //         if (IMAGES[key]) img.src = IMAGES[key];
+        //     });
+        // });
+    </script>
+    <script>
+        function swap(img) {
+            const main = document.getElementById('mainImage');
+            main.src = img.src.replace('300x300', '1200x900');
+        }
+    </script>
+    <script>
+        // Obrazy Pexels – centralne mapowanie
+        const IMAGES = {
+            prod_boczek: "https://images.pexels.com/photos/1590773/pexels-photo-1590773.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            prod_kielbasa: "https://images.pexels.com/photos/929137/pexels-photo-929137.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            prod_halva: "https://images.pexels.com/photos/27950069/pexels-photo-27950069.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            prod_napoje: "https://images.pexels.com/photos/12111188/pexels-photo-12111188.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            prod_zboza: "https://images.pexels.com/photos/8108170/pexels-photo-8108170.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            prod_herring: "https://images.pexels.com/photos/19993434/pexels-photo-19993434.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        };
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('img[data-img]').forEach(img => {
+                const key = img.getAttribute('data-img');
+                if (IMAGES[key]) img.src = IMAGES[key];
+            });
+        });
+    </script>
+
+</body>
+
+</html>
