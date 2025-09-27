@@ -256,27 +256,32 @@
 <body>
     <header class="site">
         <div class="container nav" role="navigation" aria-label="Główna nawigacja">
-            <a class="brand" href="/">
-                <span class="logo" aria-hidden="true"></span>
-                <span>Хочу Сала</span>
-            </a>
-            <nav aria-label="Menu">
-                <ul>
-                    <li><a href="./sklep.html">Sklep</a></li>
-                    <li><a href="./karta.html">karta</a></li>
-                    <li><a href="#nowosci">Nowości</a></li>
-                    <li><a href="#lokalizacje">Lokalizacje</a></li>
-                    <li><a href="#kontakt">Kontakt</a></li>
-                </ul>
-            </nav>
+            <a class="brand" href="#"><span class="logo" aria-hidden="true"></span><span>Хочу Сала</span></a>
+            <ul class="links" aria-label="Menu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/sklep.html">Sklep</a></li>
+                <li><a href="/karta.html">karta</a></li>
+                <li><a href="#">Lokalizacje</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
             <div class="actions">
-                <div class="search" role="search">
-
-                    <input id="q" type="search" placeholder="Szukaj produktów…" />
+                <div class="search" role="search"><input type="search" placeholder="Szukaj produktów…"
+                        aria-label="Szukaj">
                 </div>
                 <a class="btn" href="#">Koszyk (0)</a>
+                <button class="burger" id="burger" aria-label="Otwórz menu" aria-expanded="false"
+                    aria-controls="mobileMenu"><span></span></button>
             </div>
         </div>
+        <nav id="mobileMenu" class="mobile" aria-hidden="true">
+            <div class="container">
+                <a href="/index.html">Home</a>
+                <a href="/sklep.html">Sklep</a>
+                <a href="/karta.html">karta</a>
+                <a href="#">Lokalizacje</a>
+                <a href="#">Kontakt</a>
+            </div>
+        </nav>
     </header>
 
     <main class="container">
@@ -552,6 +557,16 @@
         }
     </script>
     <script>
+        // Burger menu
+        const burger = document.getElementById('burger');
+        const mobile = document.getElementById('mobileMenu');
+        burger.addEventListener('click', () => {
+            const isOpen = mobile.classList.toggle('open');
+            burger.classList.toggle('active', isOpen);
+            burger.setAttribute('aria-expanded', String(isOpen));
+            mobile.setAttribute('aria-hidden', String(!isOpen));
+            document.body.classList.toggle('menu-open', isOpen);
+        });
         // Obrazy Pexels – centralne mapowanie
         const IMAGES = {
             prod_boczek: "https://images.pexels.com/photos/1590773/pexels-photo-1590773.jpeg?auto=compress&cs=tinysrgb&w=1200",
